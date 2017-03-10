@@ -1,0 +1,24 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+    monitoring="autodetect" dynamicConfig="true">
+
+    <diskStore path="user.dir" />
+    <cache name="greetings" maxEntriesLocalHeap="10000"
+        maxEntriesLocalDisk="9000000" eternal="false"
+        diskSpoolBufferSizeMB="10240" timeToIdleSeconds="300"
+        timeToLiveSeconds="600" memoryStoreEvictionPolicy="LFU"
+        transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+        <cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+            properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,
+        replicateUpdatesViaCopy=false, replicateRemovals=true" />
+    </cache>
+    
+    <cacheManagerPeerProviderFactory
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+        properties="peerDiscovery=manual,rmiUrls=//aussldkapp12.us.dell.com:40001/greetings|//aussldkapp11.us.dell.com:40001/greetings" />
+    <cacheManagerPeerListenerFactory
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+        properties="hostName=localhost, port=40001, socketTimeoutMillis=2000" />
+</ehcache>

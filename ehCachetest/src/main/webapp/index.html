@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Test</title>
+<style type="text/css">
+p {
+	font-family: cursive;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 25px;
+	display: table-cell;
+}
+
+form {
+	padding: 15px;
+	border-bottom: 15px
+}
+
+label {
+	display: table-cell
+}
+
+input {
+	font-family: sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#f0f0f0">
+	<br />
+	<br />
+	<form action="./services/rest/formPut" method="post">
+		<h3>Insert Into Cache:</h3>
+		<p>
+			<label for="key">key:&nbsp;</label><input id="key" name="key"
+				type="text" maxlength="24">
+		</p>
+		<br />
+		<p>
+			<label for="value">value:&nbsp;</label>
+			<textarea cols="45" rows="3" id="value" name="value">content</textarea>
+		</p>
+		<input type="submit">
+	</form>
+	<form action="./services/rest/formGet" method="post">
+		<h3>Get From Cache:</h3>
+		<p>
+			<label for="key">key:&nbsp;</label><input id="key" name="key"
+				type="text" maxlength="24">
+		</p>
+		<input type="submit">
+	</form>
+	<form action="./services/rest/formDelete" method="post">
+		<h3>Delete From Cache:</h3>
+		<p>
+			<label for="key">key:&nbsp;</label><input id="key" name="key"
+				type="text" maxlength="24">
+		</p>
+		<input type="submit">
+	</form>
+	<form action="./services/rest/clear" method="get">
+		<h3>Clear Cache:</h3>
+		<input type="submit">
+	</form>
+</body>
+</html>
